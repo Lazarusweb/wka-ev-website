@@ -1,0 +1,142 @@
+/* =====================================================
+   animations.css — Keyframes, hovers, transitions
+   ===================================================== */
+
+/* ── Staggered Reveal Delays ── */
+[data-reveal-stagger="0"]   { transition-delay: 0ms; }
+[data-reveal-stagger="100"] { transition-delay: 100ms; }
+[data-reveal-stagger="200"] { transition-delay: 200ms; }
+[data-reveal-stagger="300"] { transition-delay: 300ms; }
+[data-reveal-stagger="400"] { transition-delay: 400ms; }
+[data-reveal-stagger="500"] { transition-delay: 500ms; }
+[data-reveal-stagger="600"] { transition-delay: 600ms; }
+
+/* ── Gold Line Entrance ── */
+@keyframes gold-line-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Counter Number Count-Up ── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Subtle Ink Bloom ── */
+@keyframes ink-bloom {
+  0%   { opacity: 0; transform: scale(0.85); filter: blur(8px); }
+  100% { opacity: 1; transform: scale(1);    filter: blur(0); }
+}
+
+/* ── Float ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Pulse Ring ── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(201, 168, 76, 0.5); }
+  100% { box-shadow: 0 0 0 20px rgba(201, 168, 76, 0); }
+}
+
+/* ── Stat Number Hover ── */
+.about__stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  transition: transform var(--dur-base) var(--ease-expo);
+}
+.about__stat:hover .about__stat-number {
+  transform: scale(1.08);
+}
+
+/* ── Pillar Card ── */
+.pillar {
+  transition:
+    transform var(--dur-base) var(--ease-smooth),
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+.pillar:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 76, 0.5) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.2);
+}
+
+/* ── Founder Card ── */
+.founder-card {
+  transition:
+    transform var(--dur-base) var(--ease-smooth),
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+.founder-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 168, 76, 0.5) !important;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(201, 168, 76, 0.2);
+}
+.founder-card:hover .founder-card__portrait-inner {
+  box-shadow: 0 0 0 2px var(--ink-deep), 0 0 0 4px var(--gold-light);
+  animation: pulse-ring 1.5s ease-out;
+}
+
+/* ── Gallery Image Hover ── */
+.gallery__img {
+  transition: transform 0.5s var(--ease-smooth);
+}
+.gallery__item:hover .gallery__img {
+  transform: scale(1.04);
+}
+.gallery__overlay {
+  transition: opacity var(--dur-base) ease;
+}
+
+/* ── Event Card ── */
+.event-card {
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-base) var(--ease-smooth);
+}
+.event-card:hover {
+  background: rgba(201, 168, 76, 0.06) !important;
+  border-left-color: var(--gold-light) !important;
+  transform: translateX(4px);
+}
+
+/* ── CTA Button Ripple ── */
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all var(--dur-base) ease;
+}
+.btn--primary { position: relative; overflow: hidden; }
+.btn--primary:active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Lightbox ── */
+@keyframes lightbox-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Nav Language Switcher Active ── */
+.lang-btn {
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+.lang-btn:active { transform: scale(0.92); }
